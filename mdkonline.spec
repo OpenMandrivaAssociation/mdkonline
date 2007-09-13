@@ -52,6 +52,9 @@ mkdir -p %buildroot%_prefix/X11R6/bin/
 ln -sf %_sbindir/mdkonline %buildroot%_sbindir/drakonline
 ln -sf %_sbindir/mdkonline %buildroot%_prefix/X11R6/bin/mdkonline
 
+mkdir -p %buildroot%_sysconfdir/cron.daily/
+touch %buildroot%_sysconfdir/cron.daily/mdkupdate
+
 mkdir -p $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d
 cat > $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d/mdkapplet <<EOF
 #!/bin/sh
@@ -162,6 +165,7 @@ rm -rf $RPM_BUILD_ROOT
 %_sysconfdir/X11/xinit.d/mdkapplet
 %_sysconfdir/security/console.apps/urpmi.update
 %_sysconfdir/pam.d/urpmi.update
+%ghost %config(noreplace) %_sysconfdir/cron.daily/mdkupdate
 
 
 ##################################################################
