@@ -82,7 +82,7 @@ cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-mdvonline.desktop <<EOF
 Name=Mandriva Online
 Comment=Wizard for update service subscription
 Exec=%{_sbindir}/%{name}
-Icon=mdkonline.png
+Icon=mdkonline
 Type=Application
 StartupNotify=true
 Categories=X-MandrivaLinux-System-Configuration-Networking;Settings;Network;
@@ -95,7 +95,7 @@ cat > $RPM_BUILD_ROOT%{_datadir}/autostart/mandriva-mdvonline.desktop <<EOF
 Name=Mandriva Online Applet
 Comment=Applet for Mandriva Online
 Exec=%{_bindir}/mdkapplet
-Icon=mdkonline.png
+Icon=mdkonline
 Type=Application
 StartupNotify=true
 Categories=X-MandrivaLinux-System-Configuration-Networking;Settings;Network;
@@ -108,7 +108,7 @@ cat > $RPM_BUILD_ROOT%{_datadir}/gnome/autostart/mandriva-mdvonline.desktop <<EO
 Name=Mandriva Online Applet
 Comment=Applet for Mandriva Online
 Exec=%{_bindir}/mdkapplet
-Icon=mdkonline.png
+Icon=mdkonline
 Type=Application
 StartupNotify=true
 Categories=X-MandrivaLinux-System-Configuration-Networking;Settings;Network;
