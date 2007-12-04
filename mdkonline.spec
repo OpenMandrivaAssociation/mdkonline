@@ -1,4 +1,4 @@
-%define version 2.24
+%define version 2.25
 %define name mdkonline
 %define release %mkrel 1
 
@@ -48,9 +48,6 @@ make PREFIX=$RPM_BUILD_ROOT install
 
 #symbolic link to drakonline and older path
 mkdir -p %buildroot%_prefix/X11R6/bin/
-#ln -sf %_sbindir/mdkonline %buildroot%_sbindir/drakclub
-ln -sf %_sbindir/mdkonline %buildroot%_sbindir/drakonline
-ln -sf %_sbindir/mdkonline %buildroot%_prefix/X11R6/bin/mdkonline
 
 mkdir -p %buildroot%_sysconfdir/cron.daily/
 touch %buildroot%_sysconfdir/cron.daily/mdkupdate
@@ -68,26 +65,6 @@ chmod +x $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d/mdkapplet
 
 #install lang
 %{find_lang} %{name}
-
-#install menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat > %{buildroot}%{_menudir}/%{name} <<EOF
-?package(%{name}): needs="x11" command="%{_sbindir}/%{name}" section="System" icon="mdkonline.png" title="Mandriva Online" longtitle="Wizard for update service subscription" xdg="true"
-?package(%{name}): command="%{_sbindir}/mdkupdate --bundle" needs="x11" kde_opt="InitialPreference=15" section="Configuration/Other" mimetypes="application/x-mdv-exec" title="Mandriva Online Bundle" longtitle="Mandriva Linux bundle handler" xdg="true"
-EOF
-
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-mdvonline.desktop <<EOF
-[Desktop Entry]
-Name=Mandriva Online
-Comment=Wizard for update service subscription
-Exec=%{_sbindir}/%{name}
-Icon=mdkonline
-Type=Application
-StartupNotify=true
-Categories=X-MandrivaLinux-System-Configuration-Networking;Settings;Network;
-NoDisplay=true
-EOF
 
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/autostart
 cat > $RPM_BUILD_ROOT%{_datadir}/autostart/mandriva-mdvonline.desktop <<EOF
@@ -145,16 +122,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc COPYING 
 %{_sbindir}/mdkupdate
-%{_sbindir}/mdkonline
 %{_sbindir}/migrate-mdvonline-applet.pl
-%{_sbindir}/drakonline
 %{_bindir}/*
-%{_prefix}/X11R6/bin/*
 %dir %{_prefix}/lib/libDrakX/drakfirsttime
 %{_prefix}/lib/libDrakX/drakfirsttime/*.pm
-%{_menudir}/%{name}
 %{_datadir}/autostart/mandriva-*.desktop
-%{_datadir}/applications/mandriva-*.desktop
 %{_miconsdir}/*.png
 %{_iconsdir}/*.png
 %{_liconsdir}/*.png
@@ -166,6 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 %_sysconfdir/security/console.apps/urpmi.update
 %_sysconfdir/pam.d/urpmi.update
 %ghost %config(noreplace) %_sysconfdir/cron.daily/mdkupdate
+%config(noreplace) %_sysconfdir/sysconfig/mdkapplet
 
 
 ##################################################################
