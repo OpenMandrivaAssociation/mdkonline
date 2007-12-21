@@ -21,6 +21,7 @@ Provides:   %{name}-backend
 Obsoletes:  %{name}-backend
 Requires:	hwdb-clients >= 0.15.1-1mdk
 BuildRequires: 	gettext, perl-MDK-Common-devel
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildArch: 	noarch
 
 %description
