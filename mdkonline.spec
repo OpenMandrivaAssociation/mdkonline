@@ -1,4 +1,4 @@
-%define version 2.27
+%define version 2.28
 %define name mdkonline
 %define release %mkrel 1
 
@@ -6,7 +6,7 @@ Summary:	Mandriva Online Update Tool
 Name:		%{name}
 Version:	%{version}
 Release: 	%{release}
-Source0:	%{name}-%{version}.tar.bz2
+Source0:	%{name}-%{version}.tar.lzma
 URL:		http://www.mandrivaonline.com
 License:	GPL
 Group:		System/Configuration/Other
