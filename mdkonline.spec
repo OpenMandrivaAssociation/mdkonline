@@ -93,7 +93,6 @@ EOF
 %post
 %{update_desktop_database}
 %{update_mime_database}
-%{update_menus}
 
 if [ -r /etc/cron.daily/mdkupdate ]; then
   perl -p -i -e 's!/usr/bin/mdkupdate!/usr/sbin/mdkupdate!' /etc/cron.daily/mdkupdate
@@ -110,7 +109,6 @@ fi
 :
 
 %postun
-%{clean_menus}
 %{clean_desktop_database}
 %{clean_mime_database}
 
