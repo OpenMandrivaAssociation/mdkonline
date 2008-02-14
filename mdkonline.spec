@@ -1,6 +1,6 @@
 %define version 2.29
 %define name mdkonline
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary:	Mandriva Online Update Tool  
 Name:		%{name}
@@ -19,7 +19,6 @@ Requires: rpmdrake > 2.20-3.1.20060mdk
 Requires: urpmi > 4.7.15-1.2.20060mdk
 Provides:   %{name}-backend
 Obsoletes:  %{name}-backend
-Requires:	hwdb-clients >= 0.15.1-1mdk
 BuildRequires: 	gettext, perl-MDK-Common-devel
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildArch: 	noarch
