@@ -14,9 +14,9 @@ Requires:  	drakxtools-newt => 10.4.114, perl-Gtk2-TrayIcon >= 0.03-3mdk, perl-C
 # we need wget for authenticated media:
 Requires: wget
 # for gurpmi.addmedia:
-Requires: rpmdrake > 2.20-3.1.20060mdk
+Requires: rpmdrake > 4.0
 # for good gurpmi:
-Requires: urpmi > 4.7.15-1.2.20060mdk
+Requires: urpmi > 5.0
 Provides:   %{name}-backend
 Obsoletes:  %{name}-backend
 BuildRequires: 	gettext, perl-MDK-Common-devel
