@@ -1,4 +1,4 @@
-%define version 2.31
+%define version 2.32
 %define name mdkonline
 %define release %mkrel 1
 
@@ -16,7 +16,7 @@ Requires: wget
 # for gurpmi.addmedia:
 Requires: rpmdrake > 4.0
 # for good gurpmi:
-Requires: urpmi > 5.0
+Requires: urpmi > 5.8
 Provides:   %{name}-backend
 Obsoletes:  %{name}-backend
 BuildRequires: 	gettext, perl-MDK-Common-devel
