@@ -10,7 +10,7 @@ Source0:	%{name}-%{version}.tar.lzma
 URL:		http://www.mandrivaonline.com
 License:	GPL
 Group:		System/Configuration/Other
-Requires:  	drakxtools-newt => 10.4.114, perl-Gtk2-TrayIcon >= 0.03-3mdk, perl-Crypt-SSLeay >= 0.51-2mdk
+Requires:  	drakxtools-newt => 10.4.114, perl-Crypt-SSLeay >= 0.51-2mdk
 # we need wget for authenticated media:
 Requires: wget
 # for gurpmi.addmedia:
