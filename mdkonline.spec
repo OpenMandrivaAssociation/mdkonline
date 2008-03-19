@@ -17,6 +17,7 @@ Requires: wget
 Requires: rpmdrake > 4.0
 # for good gurpmi:
 Requires: urpmi >= 5.9
+Requires:   libdrakx-net >= 0.29
 Provides:   %{name}-backend
 Obsoletes:  %{name}-backend
 BuildRequires: 	gettext, perl-MDK-Common-devel
