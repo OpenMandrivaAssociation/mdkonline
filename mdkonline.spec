@@ -25,12 +25,9 @@ BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildArch: 	noarch
 
 %description
-The Mandriva Online tool is designed for registered users 
-who want to upload their configuration (packages, hardware infos). 
-This allows them to be kept informed about security updates, 
-hardware support/enhancements and other high value services.
+The Mandriva Online tool allows users to be kept informed about security
+updates, hardware support/enhancements and other high value services.
 The package include :
-* Wizard for users registration and configuration uploads, 
 * Update daemon which allows you to install security updates 
   automatically,
 * A KDE/Gnome/IceWM compliant applet for security updates notification
