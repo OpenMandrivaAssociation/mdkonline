@@ -1,6 +1,6 @@
 %define version 2.39
 %define name mdkonline
-%define release %mkrel 2
+%define release %mkrel 3
 
 Summary:	Mandriva Online Update Tool  
 Name:		%{name}
@@ -54,7 +54,7 @@ cat > $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d/mdkapplet <<EOF
 #!/bin/sh
 DESKTOP=\$1
 case \$DESKTOP in
-   IceWM|Fluxbox|xfce4) exec /usr/bin/mdkapplet;;
+   IceWM|Fluxbox|xfce4|LXDE) exec /usr/bin/mdkapplet;;
 esac
 EOF
 
