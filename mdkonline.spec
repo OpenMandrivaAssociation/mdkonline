@@ -1,6 +1,6 @@
-%define version 2.40
+%define version 2.41
 %define name mdkonline
-%define release %mkrel 2
+%define release %mkrel 1
 
 Summary:	Mandriva Online Update Tool  
 Name:		%{name}
@@ -17,6 +17,7 @@ Requires: wget
 Requires: rpmdrake > 4.0
 # for good gurpmi:
 Requires: urpmi >= 5.9
+Requires: gurpmi >= 5.9
 Requires:   libdrakx-net >= 0.29
 Provides:   %{name}-backend
 Obsoletes:  %{name}-backend
