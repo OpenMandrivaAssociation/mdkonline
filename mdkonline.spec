@@ -22,7 +22,7 @@ Requires: urpmi >= 6.7.1
 Requires: urpmi >= 5.19.1.1
 %else
 Requires: urpmi >= 5.9
-%ndif
+%endif
 Requires: gurpmi >= 5.9
 Requires:   libdrakx-net >= 0.29
 Provides:   %{name}-backend
