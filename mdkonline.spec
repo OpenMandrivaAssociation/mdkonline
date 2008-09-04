@@ -99,7 +99,7 @@ fi
 
 %triggerun -- mdkonline < 2.0-11mdk
 [[ $2 ]] || exit 0
-%{_sbindir}/migrate-mdvonline-applet.pl old
+%{_sbindir}/migrate-mdvonline-applet.pl old &>/dev/null
 :
 
 %triggerin -- mdkonline > 2.0-10mdk
