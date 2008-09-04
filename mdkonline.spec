@@ -1,4 +1,4 @@
-%define version 2.41
+%define version 2.42
 %define name mdkonline
 %define release %mkrel 1
 
@@ -16,7 +16,13 @@ Requires: wget
 # for gurpmi.addmedia:
 Requires: rpmdrake > 4.0
 # for good gurpmi:
+%if %mdkversion <= 200900
+Requires: urpmi >= 6.7.1
+%elseif %mdkversion <= 200801
+Requires: urpmi >= 5.19.1.1
+%else
 Requires: urpmi >= 5.9
+%ndif
 Requires: gurpmi >= 5.9
 Requires:   libdrakx-net >= 0.29
 Provides:   %{name}-backend
