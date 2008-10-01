@@ -1,4 +1,4 @@
-%define version 2.44
+%define version 2.45
 %define name mdkonline
 %define release %mkrel 1
 
