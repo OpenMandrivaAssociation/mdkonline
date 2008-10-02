@@ -1,6 +1,6 @@
 %define version 2.46
 %define name mdkonline
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary:	Mandriva Online Update Tool  
 Name:		%{name}
@@ -137,7 +137,9 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/gnome/autostart/mandriva-mdvonline.desktop
 %{_datadir}/%{name}/pixmaps/*.png
 %_sysconfdir/X11/xinit.d/mdkapplet
+%_sysconfdir/security/console.apps/urpmi.removemedia
 %_sysconfdir/security/console.apps/urpmi.update
+%_sysconfdir/pam.d/urpmi.removemedia
 %_sysconfdir/pam.d/urpmi.update
 %ghost %config(noreplace) %_sysconfdir/cron.daily/mdkupdate
 %config(noreplace) %_sysconfdir/sysconfig/mdkapplet
