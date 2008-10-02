@@ -11,8 +11,6 @@ URL:		http://www.mandrivaonline.com
 License:	GPL
 Group:		System/Configuration/Other
 Requires:  	drakxtools-newt => 10.4.114
-# we need wget for authenticated media:
-Requires: wget
 # for gurpmi.addmedia:
 Requires: rpmdrake > 4.0
 # for good gurpmi:
