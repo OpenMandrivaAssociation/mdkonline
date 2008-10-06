@@ -18,8 +18,8 @@ Requires: rpmdrake > 4.0
 Requires: urpmi >= 6.7.1
 Requires: gurpmi >= 6.7.1
 %elseif %mdkversion >= 200801
-Requires: urpmi >= 5.19.3
-Requires: gurpmi >= 5.19.3
+Requires: urpmi >= 5.19.4
+Requires: gurpmi >= 5.19.4
 %else
 Requires: urpmi >= 5.9
 Requires: gurpmi >= 5.9
