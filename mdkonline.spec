@@ -16,12 +16,14 @@ Requires: rpmdrake > 4.0
 # for good gurpmi:
 %if %mdkversion >= 200900
 Requires: urpmi >= 6.7.1
+Requires: gurpmi >= 6.7.1
 %elseif %mdkversion >= 200801
 Requires: urpmi >= 5.19.1.1
+Requires: gurpmi >= 5.19.1.1
 %else
 Requires: urpmi >= 5.9
-%endif
 Requires: gurpmi >= 5.9
+%endif
 Requires:   libdrakx-net >= 0.29
 Provides:   %{name}-backend
 Obsoletes:  %{name}-backend
