@@ -1,4 +1,4 @@
-%define version 2.55
+%define version 2.56
 %define name mdkonline
 %define release %mkrel 1
 
@@ -123,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc COPYING 
+%{_sbindir}/mdkapplet-upgrade-helper
 %{_sbindir}/mdkupdate
 %{_sbindir}/migrate-mdvonline-applet.pl
 %{_bindir}/*
@@ -137,9 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/gnome/autostart/mandriva-mdvonline.desktop
 %{_datadir}/%{name}/pixmaps/*.png
 %_sysconfdir/X11/xinit.d/mdkapplet
-%_sysconfdir/security/console.apps/urpmi.removemedia
 %_sysconfdir/security/console.apps/urpmi.update
-%_sysconfdir/pam.d/urpmi.removemedia
 %_sysconfdir/pam.d/urpmi.update
 %ghost %config(noreplace) %_sysconfdir/cron.daily/mdkupdate
 %config(noreplace) %_sysconfdir/sysconfig/mdkapplet
