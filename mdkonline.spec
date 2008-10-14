@@ -1,4 +1,4 @@
-%define version 2.58
+%define version 2.59
 %define name mdkonline
 %define release %mkrel 1
 
@@ -15,11 +15,11 @@ Requires:  	drakxtools-newt => 10.4.114
 Requires: rpmdrake > 4.0
 # for good gurpmi:
 %if %mdkversion >= 200900
-Requires: urpmi >= 6.7.1
-Requires: gurpmi >= 6.7.1
+Requires: urpmi >= 6.14.3
+Requires: gurpmi >= 6.14.3
 %elseif %mdkversion >= 200801
-Requires: urpmi >= 5.19.5
-Requires: gurpmi >= 5.19.5
+Requires: urpmi >= 5.19.7
+Requires: gurpmi >= 5.19.7
 %else
 Requires: urpmi >= 5.9
 Requires: gurpmi >= 5.9
@@ -103,16 +103,6 @@ if [ -r /etc/cron.daily/mdkupdate ]; then
   perl -p -i -e 's!/usr/bin/mdkupdate!/usr/sbin/mdkupdate!' /etc/cron.daily/mdkupdate
 fi
 
-%triggerun -- mdkonline < 2.0-11mdk
-[[ $2 ]] || exit 0
-%{_sbindir}/migrate-mdvonline-applet.pl old &>/dev/null
-:
-
-%triggerin -- mdkonline > 2.0-10mdk
-[[ $2 ]] || exit 0
-%{_sbindir}/migrate-mdvonline-applet.pl new
-:
-
 %postun
 %{clean_desktop_database}
 %{clean_mime_database}
@@ -125,7 +115,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING 
 %{_sbindir}/mdkapplet-upgrade-helper
 %{_sbindir}/mdkupdate
-%{_sbindir}/migrate-mdvonline-applet.pl
 %{_bindir}/*
 %dir %{_prefix}/lib/libDrakX/drakfirsttime
 %{_prefix}/lib/libDrakX/drakfirsttime/*.pm
