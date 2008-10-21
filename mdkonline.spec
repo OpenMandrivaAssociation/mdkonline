@@ -14,12 +14,15 @@ Requires:  	drakxtools-newt => 10.4.114
 # for gurpmi.addmedia:
 Requires: rpmdrake > 4.0
 # for good gurpmi:
-%if %mdkversion >= 200900
-Requires: urpmi >= 6.14.3
-Requires: gurpmi >= 6.14.3
+%if %mdkversion >= 200901
+Requires: urpmi >= 6.17
+Requires: gurpmi >= 6.17
+%elseif %mdkversion >= 200900
+Requires: urpmi >= 6.14.9
+Requires: gurpmi >= 6.14.9
 %elseif %mdkversion >= 200801
-Requires: urpmi >= 5.19.7
-Requires: gurpmi >= 5.19.7
+Requires: urpmi >= 5.19.9
+Requires: gurpmi >= 5.19.9
 %else
 Requires: urpmi >= 5.9
 Requires: gurpmi >= 5.9
