@@ -1,4 +1,4 @@
-%define version 2.67
+%define version 2.68
 %define name mdkonline
 %define release %mkrel 1
 
@@ -10,6 +10,8 @@ Source0:	%{name}-%{version}.tar.lzma
 URL:		http://www.mandrivaonline.com
 License:	GPL
 Group:		System/Configuration/Other
+# for LWP::UserAgent:
+Requires:	perl-libwww-perl
 Requires:  	drakxtools-newt => 10.4.114
 # for gurpmi.addmedia:
 Requires: rpmdrake > 4.0
@@ -119,6 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc COPYING 
+%{_sbindir}/mdkapplet-restricted-helper
 %{_sbindir}/mdkapplet-upgrade-helper
 %{_sbindir}/mdkupdate
 %{_bindir}/*
