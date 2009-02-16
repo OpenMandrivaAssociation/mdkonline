@@ -121,6 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc COPYING 
+%{_sbindir}/mdkapplet-config
 %{_sbindir}/mdkapplet-restricted-helper
 %{_sbindir}/mdkapplet-upgrade-helper
 %{_sbindir}/mdkupdate
