@@ -1,4 +1,4 @@
-%define version 2.73
+%define version 2.74
 %define name mdkonline
 %define release %mkrel 1
 
@@ -12,7 +12,7 @@ License:	GPL
 Group:		System/Configuration/Other
 # for LWP::UserAgent:
 Requires:	perl-libwww-perl
-Requires:  	drakxtools-newt => 10.4.114
+Requires:  	drakxtools-newt => 11.88
 # for gurpmi.addmedia:
 Requires: rpmdrake > 4.0
 # for good gurpmi:
