@@ -1,4 +1,4 @@
-%define version 2.74
+%define version 2.75
 %define name mdkonline
 %define release %mkrel 1
 
@@ -13,8 +13,8 @@ Group:		System/Configuration/Other
 # for LWP::UserAgent:
 Requires:	perl-libwww-perl
 Requires:  	drakxtools-newt => 11.88
-# for gurpmi.addmedia:
-Requires: rpmdrake > 4.0
+# for gurpmi.addmedia & update API:
+Requires: rpmdrake >= 5.11.1
 # for good gurpmi:
 %if %mdkversion >= 200910
 Requires: urpmi >= 6.17
