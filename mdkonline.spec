@@ -1,6 +1,6 @@
 %define version 2.76.1
 %define name mdkonline
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary:	Mandriva Online Update Tool  
 Name:		%{name}
@@ -15,6 +15,8 @@ Requires:	perl-libwww-perl
 Requires:  	drakxtools-newt => 11.88
 # for gurpmi.addmedia & update API:
 Requires: rpmdrake >= 5.11.1
+# For adding restricted media:
+Requires: perl-Crypt-SSLeay
 # for good gurpmi:
 %if %mdkversion >= 200910
 Requires: urpmi >= 6.17
