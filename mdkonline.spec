@@ -1,6 +1,6 @@
-%define version 2.76.1
+%define version 2.76.2
 %define name mdkonline
-%define release %mkrel 2
+%define release %mkrel 1
 
 Summary:	Mandriva Online Update Tool  
 Name:		%{name}
