@@ -124,8 +124,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc COPYING 
 %{_sbindir}/mdkapplet-config
-%{_sbindir}/mdkapplet-restricted-helper
-%{_sbindir}/mdkapplet-upgrade-helper
+%{_sbindir}/mdkapplet-*-helper
 %{_sbindir}/mdkupdate
 %{_bindir}/*
 %dir %{_prefix}/lib/libDrakX/drakfirsttime
