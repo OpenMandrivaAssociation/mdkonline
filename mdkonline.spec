@@ -12,9 +12,15 @@ License:	GPL
 Group:		System/Configuration/Other
 # for LWP::UserAgent:
 Requires:	perl-libwww-perl
+%if %mdkversion >= 200910
 Requires:  	drakxtools-newt => 11.88
 # for gurpmi.addmedia & update API:
 Requires: rpmdrake >= 5.11.1
+%else
+Requires: drakxtools-newt >= 10.4.114
+# for gurpmi.addmedia
+Requires: rpmdrake > 4.0
+%endif
 # For adding restricted media:
 Requires: perl-Crypt-SSLeay
 # for good gurpmi:
