@@ -13,7 +13,7 @@ Group:		System/Configuration/Other
 # for LWP::UserAgent:
 Requires:	perl-libwww-perl
 %if %mdkversion >= 201000
-Requires:   drakxtools-newt => 12.47
+Requires:   drakxtools-newt => 12.48
 Requires: rpmdrake >= 5.11.1
 %endif
 %if %mdkversion == 200910
