@@ -1,4 +1,4 @@
-%define version 2.77.7
+%define version 2.77.10
 %define name mdkonline
 %define release %mkrel 1
 
@@ -7,6 +7,9 @@ Name:		%{name}
 Version:	%{version}
 Release: 	%{release}
 Source0:	%{name}-%{version}.tar.lzma
+%if %mdkversion < 201000
+Patch0:		do-not-use-hscale-with-older-drakxtools.diff
+%endif
 URL:		http://www.mandrivaonline.com
 License:	GPL
 Group:		System/Configuration/Other
@@ -63,6 +66,9 @@ The package include :
 
 %prep
 %setup -q
+%if %mdkversion < 201000
+Patch0:		do-not-use-hscale-with-older-drakxtools.diff
+%endif
 
 %build
 perl -pi -e 's!my \$ver = 1;!my \$ver = '"'%version-%release'"';!' mdkapplet
