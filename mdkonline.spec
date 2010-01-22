@@ -7,7 +7,6 @@ Name:		%{name}
 Version:	%{version}
 Release: 	%{release}
 Source0:	%{name}-%{version}.tar.lzma
-Patch0:		buildfix.diff 
 URL:		http://www.mandrivaonline.com
 License:	GPL
 Group:		System/Configuration/Other
@@ -64,7 +63,6 @@ The package include :
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 perl -pi -e 's!my \$ver = 1;!my \$ver = '"'%version-%release'"';!' mdkapplet
