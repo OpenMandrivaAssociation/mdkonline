@@ -45,7 +45,7 @@ Requires: gurpmi >= 5.19.9
 Requires: urpmi >= 5.9
 Requires: gurpmi >= 5.9
 %endif
-Requires:   libdrakx-net >= 0.29
+Requires:   libdrakx-net >= 0.29, mdkonline
 Provides:   %{name}-backend
 Obsoletes:  %{name}-backend
 BuildRequires: 	gettext, perl-MDK-Common-devel
