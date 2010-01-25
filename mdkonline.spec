@@ -24,7 +24,11 @@ Requires: rpmdrake >= 5.11.1
 %if %mdkversion < 200910
 Requires: drakxtools-newt >= 10.4.114
 # for gurpmi.addmedia
+%if %mdkversion > 200800
 Requires: rpmdrake > 4.0
+%else
+Requires: rpmdrake >= 3.117.8
+%endif
 %endif
 # For adding restricted media:
 Requires: perl-Crypt-SSLeay
@@ -42,10 +46,14 @@ Requires: urpmi >= 5.19.9
 Requires: gurpmi >= 5.19.9
 %endif
 %if %mdkversion < 200810
-Requires: urpmi >= 5.9
-Requires: gurpmi >= 5.9
+Requires: urpmi >= 4.10.14
+Requires: gurpmi >= 4.10.14
 %endif
+%if %mdkversion > 200800
 Requires:   libdrakx-net >= 0.29
+%else
+Requires:   libdrakx-net >= 0.26
+%endif
 Provides:   %{name}-backend
 Obsoletes:  %{name}-backend
 BuildRequires: 	gettext, perl-MDK-Common-devel
