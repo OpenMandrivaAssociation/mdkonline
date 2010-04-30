@@ -78,7 +78,7 @@ perl -pi -e 's!my \$ver = 1;!my \$ver = '"'%version-%release'"';!' mdkapplet
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make PREFIX=$RPM_BUILD_ROOT install 
+make PREFIX=$RPM_BUILD_ROOT MANDRIVA_VERSION=%{mandriva_release} install
 
 #symbolic link to drakonline and older path
 mkdir -p %buildroot%_prefix/X11R6/bin/
