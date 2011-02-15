@@ -1,7 +1,7 @@
 %define version 2.77.21
 %define name mdkonline
 %define subrel 1
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary:	Mandriva Online Update Tool  
 Name:		%{name}
@@ -86,22 +86,11 @@ mkdir -p %buildroot%_prefix/X11R6/bin/
 mkdir -p %buildroot%_sysconfdir/cron.daily/
 touch %buildroot%_sysconfdir/cron.daily/mdkupdate
 
-mkdir -p $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d
-cat > $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d/mdkapplet <<EOF
-#!/bin/sh
-DESKTOP=\$1
-case \$DESKTOP in
-   IceWM|Fluxbox|xfce4|LXDE) exec /usr/bin/mdkapplet;;
-esac
-EOF
-
-chmod +x $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d/mdkapplet
-
 #install lang
 %{find_lang} %{name}
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/autostart
-cat > $RPM_BUILD_ROOT%{_datadir}/autostart/mandriva-mdvonline.desktop <<EOF
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart
+cat > $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/mandriva-mdvonline.desktop <<EOF
 [Desktop Entry]
 Name=Mandriva Online Applet
 Comment=Applet for Mandriva Online
@@ -111,18 +100,6 @@ Type=Application
 StartupNotify=true
 Categories=X-MandrivaLinux-System-Configuration-Networking;Settings;Network;
 X-KDE-autostart-after=kdesktop
-EOF
-
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/gnome/autostart
-cat > $RPM_BUILD_ROOT%{_datadir}/gnome/autostart/mandriva-mdvonline.desktop <<EOF
-[Desktop Entry]
-Name=Mandriva Online Applet
-Comment=Applet for Mandriva Online
-Exec=%{_bindir}/mdkapplet
-Icon=mdkonline
-Type=Application
-StartupNotify=true
-Categories=X-MandrivaLinux-System-Configuration-Networking;Settings;Network;
 EOF
 
 %post
@@ -149,15 +126,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %dir %{_prefix}/lib/libDrakX/drakfirsttime
 %{_prefix}/lib/libDrakX/drakfirsttime/*.pm
-%{_datadir}/autostart/mandriva-*.desktop
+%{_sysconfdir}/xdg/autostart/mandriva-*.desktop
 %{_miconsdir}/*.png
 %{_iconsdir}/*.png
 %{_liconsdir}/*.png
 %_datadir/mime/packages/*
 %_datadir/mimelnk/application/
-%_datadir/gnome/autostart/mandriva-mdvonline.desktop
 %{_datadir}/%{name}/pixmaps/*.png
-%_sysconfdir/X11/xinit.d/mdkapplet
 %_sysconfdir/security/console.apps/urpmi.update
 %_sysconfdir/pam.d/urpmi.update
 %ghost %config(noreplace) %_sysconfdir/cron.daily/mdkupdate
