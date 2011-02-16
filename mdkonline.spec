@@ -1,7 +1,7 @@
 %define version 2.77.21
 %define name mdkonline
 %define subrel 1
-%define release %mkrel 2
+%define release %mkrel 3
 
 Summary:	Mandriva Online Update Tool  
 Name:		%{name}
@@ -86,6 +86,19 @@ mkdir -p %buildroot%_prefix/X11R6/bin/
 mkdir -p %buildroot%_sysconfdir/cron.daily/
 touch %buildroot%_sysconfdir/cron.daily/mdkupdate
 
+%if %mdkversion < 201100
+mkdir -p $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d
+cat > $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d/mdkapplet <<EOF
+#!/bin/sh
+DESKTOP=\$1
+case \$DESKTOP in
+   IceWM|Fluxbox) exec /usr/bin/mdkapplet;;
+esac
+EOF
+
+chmod +x $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d/mdkapplet
+%endif
+
 #install lang
 %{find_lang} %{name}
 
@@ -133,6 +146,9 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/mime/packages/*
 %_datadir/mimelnk/application/
 %{_datadir}/%{name}/pixmaps/*.png
+%if %mdkversion < 201100
+%_sysconfdir/X11/xinit.d/mdkapplet
+%endif
 %_sysconfdir/security/console.apps/urpmi.update
 %_sysconfdir/pam.d/urpmi.update
 %ghost %config(noreplace) %_sysconfdir/cron.daily/mdkupdate
