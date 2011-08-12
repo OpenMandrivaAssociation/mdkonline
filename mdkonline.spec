@@ -1,12 +1,13 @@
 %define version 2.77.22
 %define name mdkonline
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary:	Mandriva Online Update Tool  
 Name:		%{name}
 Version:	%{version}
-Release: 	%{release}
+Release:	%{release}
 Source0:	%{name}-%{version}.tar.xz
+Patch0:		mdkonline-2.77.22.local.to.global.patch
 URL:		http://www.mandrivaonline.com
 License:	GPL
 Group:		System/Configuration/Other
@@ -17,7 +18,7 @@ Requires:   drakxtools-newt => 12.48
 Requires: rpmdrake >= 5.11.1
 %endif
 %if %mdkversion == 200910
-Requires:  	drakxtools-newt => 11.88
+Requires:	drakxtools-newt => 11.88
 # for gurpmi.addmedia & update API:
 Requires: rpmdrake >= 5.11.1
 %endif
@@ -54,11 +55,11 @@ Requires:   libdrakx-net >= 0.29
 %else
 Requires:   libdrakx-net >= 0.26
 %endif
-Provides:   %{name}-backend
-Obsoletes:  %{name}-backend
-BuildRequires: 	gettext, perl-MDK-Common-devel
+Provides:   %{name}-backend = %{version}-%{release}
+Obsoletes:  %{name}-backend < %{version}-%{release}
+BuildRequires:	gettext, perl-MDK-Common-devel
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildArch: 	noarch
+BuildArch:	noarch
 
 %description
 The Mandriva Online tool allows users to be kept informed about security
@@ -71,6 +72,9 @@ The package include :
 
 %prep
 %setup -q
+
+# mdkonline-2.77.22.local.to.global.patch
+%patch0 -p1 -b .global
 
 %build
 perl -pi -e 's!my \$ver = 1;!my \$ver = '"'%version-%release'"';!' mdkapplet
