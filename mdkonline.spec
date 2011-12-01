@@ -80,8 +80,8 @@ The package include :
 perl -pi -e 's!my \$ver = 1;!my \$ver = '"'%version-%release'"';!' mdkapplet
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make PREFIX=$RPM_BUILD_ROOT MANDRIVA_VERSION=%{mandriva_release} install
+rm -rf %{buildroot}
+make PREFIX=%{buildroot} MANDRIVA_VERSION=%{mandriva_release} install
 
 #symbolic link to drakonline and older path
 mkdir -p %buildroot%_prefix/X11R6/bin/
@@ -90,8 +90,8 @@ mkdir -p %buildroot%_sysconfdir/cron.daily/
 touch %buildroot%_sysconfdir/cron.daily/mdkupdate
 
 %if %mdkversion < 201100
-mkdir -p $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d
-cat > $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d/mdkapplet <<EOF
+mkdir -p %{buildroot}%_sysconfdir/X11/xinit.d
+cat > %{buildroot}%_sysconfdir/X11/xinit.d/mdkapplet <<EOF
 #!/bin/sh
 DESKTOP=\$1
 case \$DESKTOP in
@@ -99,14 +99,14 @@ case \$DESKTOP in
 esac
 EOF
 
-chmod +x $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d/mdkapplet
+chmod +x %{buildroot}%_sysconfdir/X11/xinit.d/mdkapplet
 %endif
 
 #install lang
 %{find_lang} %{name}
 
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart
-cat > $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/mandriva-mdvonline.desktop <<EOF
+mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
+cat > %{buildroot}%{_sysconfdir}/xdg/autostart/mandriva-mdvonline.desktop <<EOF
 [Desktop Entry]
 Name=Mandriva Online Applet
 Comment=Applet for Mandriva Online
@@ -131,7 +131,7 @@ fi
 %{clean_mime_database}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
