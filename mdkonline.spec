@@ -1,11 +1,7 @@
-%define version 2.77.22
-%define name mdkonline
-%define release %mkrel 2
-
 Summary:	Mandriva Online Update Tool  
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		mdkonline
+Version:	2.77.22
+Release:	%mkrel 3
 Source0:	%{name}-%{version}.tar.xz
 Patch0:		mdkonline-2.77.22.local.to.global.patch
 URL:		http://www.mandrivaonline.com
@@ -14,7 +10,7 @@ Group:		System/Configuration/Other
 # for LWP::UserAgent:
 Requires:	perl-libwww-perl
 %if %mdkversion >= 201000
-Requires:   drakxtools-newt => 12.48
+Requires:   drakxtools-curses => 12.48
 Requires: rpmdrake >= 5.11.1
 %endif
 %if %mdkversion == 200910
