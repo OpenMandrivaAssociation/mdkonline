@@ -1,0 +1,27 @@
+--- mdkonline-2.77.22/mdkapplet.global	2011-05-28 01:14:03.000000000 +0400
++++ mdkonline-2.77.22/mdkapplet	2011-08-12 21:58:14.556871033 +0400
+@@ -51,6 +51,8 @@ if (!find { $_ eq '--auto-update' } @ARG
+ 
+ my $online_site = "http://www.mandrivalinux.com/";
+ my ($menu, $timeout, $network_timeout, $state_global, $sub_state);
++my $check_time;
++my $previous_state;
+ 
+ read_sys_config();
+ $config{UPDATE_FREQUENCY} ||= 3*60*60; # default to 3hours
+@@ -708,7 +710,6 @@ sub update_backport_media {
+ }
+ 
+ sub silentCheck() {
+-    my $check_time if 0;
+     my $new_time = time();
+     if (!$check_time || $new_time - $check_time > $config{DISTRO_CHECK_DELAY}) {
+         clean_distro_cache();
+@@ -914,7 +915,6 @@ sub about_dialog() {
+ sub setState {
+     my ($state) = @_;
+     my $checkme;
+-    my $previous_state if 0;
+     my @arr = @{$state{$state}{menu}};
+     my $tmp = eval { gtkcreate_pixbuf($state{$state}{colour}[0]) };
+     $icon->set_from_pixbuf($tmp) if $tmp;
