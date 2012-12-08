@@ -1,56 +1,29 @@
+%define version 2.77.22
+%define name mdkonline
+%define release %mkrel 8
+
 Summary:	Mandriva Online Update Tool  
-Name:		mdkonline
-Version:	2.77.22
-Release:	%mkrel 3
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
 Source0:	%{name}-%{version}.tar.xz
 Patch0:		mdkonline-2.77.22.local.to.global.patch
+Patch1:         mdv-to-rosa.patch
 URL:		http://www.mandrivaonline.com
 License:	GPL
 Group:		System/Configuration/Other
 # for LWP::UserAgent:
 Requires:	perl-libwww-perl
-%if %mdkversion >= 201000
-Requires:   drakxtools-curses => 12.48
 Requires: rpmdrake >= 5.11.1
-%endif
-%if %mdkversion == 200910
-Requires:	drakxtools-newt => 11.88
-# for gurpmi.addmedia & update API:
-Requires: rpmdrake >= 5.11.1
-%endif
-%if %mdkversion < 200910
-Requires: drakxtools-newt >= 10.4.114
-# for gurpmi.addmedia
-%if %mdkversion > 200800
-Requires: rpmdrake > 4.0
-%else
-Requires: rpmdrake >= 3.117.8
-%endif
-%endif
+
 # For adding restricted media:
 Requires: perl-Crypt-SSLeay
 # for good gurpmi:
-%if %mdkversion >= 200910
+
 Requires: urpmi >= 6.17
 Requires: gurpmi >= 6.17
-%endif
-%if %mdkversion == 200900
-Requires: urpmi >= 6.14.9
-Requires: gurpmi >= 6.14.9
-%endif
-%if %mdkversion == 200810
-Requires: urpmi >= 5.19.9
-Requires: gurpmi >= 5.19.9
-%endif
-%if %mdkversion < 200810
-Requires: urpmi >= 4.10.14
-Requires: gurpmi >= 4.10.14
-%endif
-%if %mdkversion > 200800
 Requires:   libdrakx-net >= 0.29
-%else
-Requires:   libdrakx-net >= 0.26
-%endif
+
 Provides:   %{name}-backend = %{version}-%{release}
 Obsoletes:  %{name}-backend < %{version}-%{release}
 BuildRequires:	gettext, perl-MDK-Common-devel
@@ -71,13 +44,14 @@ The package include :
 
 # mdkonline-2.77.22.local.to.global.patch
 %patch0 -p1 -b .global
+%patch1 -p1
 
 %build
 perl -pi -e 's!my \$ver = 1;!my \$ver = '"'%version-%release'"';!' mdkapplet
 
 %install
-rm -rf %{buildroot}
-make PREFIX=%{buildroot} MANDRIVA_VERSION=%{mandriva_release} install
+rm -rf $RPM_BUILD_ROOT
+make PREFIX=$RPM_BUILD_ROOT MANDRIVA_VERSION=%{mandriva_release} install
 
 #symbolic link to drakonline and older path
 mkdir -p %buildroot%_prefix/X11R6/bin/
@@ -86,8 +60,8 @@ mkdir -p %buildroot%_sysconfdir/cron.daily/
 touch %buildroot%_sysconfdir/cron.daily/mdkupdate
 
 %if %mdkversion < 201100
-mkdir -p %{buildroot}%_sysconfdir/X11/xinit.d
-cat > %{buildroot}%_sysconfdir/X11/xinit.d/mdkapplet <<EOF
+mkdir -p $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d
+cat > $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d/mdkapplet <<EOF
 #!/bin/sh
 DESKTOP=\$1
 case \$DESKTOP in
@@ -95,14 +69,14 @@ case \$DESKTOP in
 esac
 EOF
 
-chmod +x %{buildroot}%_sysconfdir/X11/xinit.d/mdkapplet
+chmod +x $RPM_BUILD_ROOT%_sysconfdir/X11/xinit.d/mdkapplet
 %endif
 
 #install lang
 %{find_lang} %{name}
 
-mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
-cat > %{buildroot}%{_sysconfdir}/xdg/autostart/mandriva-mdvonline.desktop <<EOF
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart
+cat > $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/mandriva-mdvonline.desktop <<EOF
 [Desktop Entry]
 Name=Mandriva Online Applet
 Comment=Applet for Mandriva Online
@@ -127,7 +101,7 @@ fi
 %{clean_mime_database}
 
 %clean
-rm -rf %{buildroot}
+rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root)
@@ -165,3 +139,9 @@ rm -rf %{buildroot}
 # http://www.mandrivalinux.com/en/cvs.php3)
 
 
+
+
+%changelog
+* Fri Aug 12 2011 Alexander Barakin <abarakin@mandriva.org> 2.77.22-2mdv2011.0
++ Revision: 694254
+- Deprecated use of my() in false conditional #63822
