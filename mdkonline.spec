@@ -1,14 +1,8 @@
-%define version 2.77.22
-%define name mdkonline
-%define release %mkrel 8
-
 Summary:	Mandriva Online Update Tool  
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		mdkonline
+Version:	2.78
+Release:	1
 Source0:	%{name}-%{version}.tar.xz
-Patch0:		mdkonline-2.77.22.local.to.global.patch
-Patch1:         mdv-to-rosa.patch
 URL:		http://www.mandrivaonline.com
 License:	GPL
 Group:		System/Configuration/Other
@@ -41,10 +35,6 @@ The package include :
 
 %prep
 %setup -q
-
-# mdkonline-2.77.22.local.to.global.patch
-%patch0 -p1 -b .global
-%patch1 -p1
 
 %build
 perl -pi -e 's!my \$ver = 1;!my \$ver = '"'%version-%release'"';!' mdkapplet
