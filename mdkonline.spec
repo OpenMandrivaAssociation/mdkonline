@@ -1,6 +1,6 @@
 Summary:	Mandriva Online Update Tool  
 Name:		mdkonline
-Version:	2.78
+Version:	2.81.1
 Release:	1
 Source0:	%{name}-%{version}.tar.xz
 URL:		http://www.mandrivaonline.com
