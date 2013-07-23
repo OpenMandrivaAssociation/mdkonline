@@ -2,10 +2,13 @@ Summary:	Mandriva Online Update Tool
 Name:		mdkonline
 Version:	2.78
 Release:	1
-Source0:	%{name}-%{version}.tar.xz
-URL:		http://www.mandrivaonline.com
 License:	GPLv2+
 Group:		System/Configuration/Other
+Url:		http://www.mandrivaonline.com
+Source0:	%{name}-%{version}.tar.xz
+BuildArch:	noarch
+BuildRequires:	gettext
+BuildRequires:	perl-MDK-Common-devel
 # for LWP::UserAgent:
 Requires:	perl-libwww-perl
 Requires:	rpmdrake >= 5.11.1
@@ -17,10 +20,7 @@ Requires:	perl-Crypt-SSLeay
 Requires:	urpmi >= 6.17
 Requires:	gurpmi >= 6.17
 Requires:	libdrakx-net >= 0.29
-
 %rename		%{name}-backend
-BuildRequires:	gettext perl-MDK-Common-devel
-BuildArch:	noarch
 
 %description
 The Mandriva Online tool allows users to be kept informed about security
@@ -84,3 +84,4 @@ fi
 %{_sysconfdir}/pam.d/urpmi.update
 %ghost %config(noreplace) %{_sysconfdir}/cron.daily/mdkupdate
 %config(noreplace) %{_sysconfdir}/sysconfig/mdkapplet
+
