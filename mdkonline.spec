@@ -1,7 +1,7 @@
 Summary:	Mandriva Online Update Tool  
 Name:		mdkonline
 Version:	2.78
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		System/Configuration/Other
 Url:		http://www.openmandriva.org/
