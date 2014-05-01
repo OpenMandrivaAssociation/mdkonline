@@ -3,6 +3,7 @@ Name:		mdkonline
 Version:	3.10
 Release:	1
 Source0:	%{name}-%{version}.tar.xz
+Source1:	%{name}.rpmlintrc
 URL:		http://www.mandrivaonline.com
 License:	GPLv2+
 Group:		System/Configuration/Other
