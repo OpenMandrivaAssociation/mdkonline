@@ -22,6 +22,7 @@ Requires:	libdrakx-net >= 2.6
 
 %rename		%{name}-backend
 BuildRequires:	gettext perl-MDK-Common-devel
+BuildRequires:	intltool
 BuildArch:	noarch
 
 %description
