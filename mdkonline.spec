@@ -1,13 +1,13 @@
 Summary:	Mandriva Online Update Tool  
 Name:		mdkonline
 Version:	2.78
-Release:	7
+Release:	8
 License:	GPLv2+
 Group:		System/Configuration/Other
 Url:		http://www.openmandriva.org/
 Source0:	%{name}-%{version}.tar.xz
 Patch0:		mdkonline-2.78-new-url.patch
-Patch1:		mdkonline-2.78-check_dir.patch
+Patch1:		mdkonline-2.78-upgrade.patch
 BuildArch:	noarch
 BuildRequires:	gettext
 BuildRequires:	perl-MDK-Common-devel
