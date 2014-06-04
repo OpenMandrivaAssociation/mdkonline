@@ -1,6 +1,6 @@
-Summary:	Mandriva Online Update Tool  
+summary:	%{vendor} Online Update Tool  
 Name:		mdkonline
-Version:	3.10
+Version:	3.10.1
 Release:	1
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
@@ -26,7 +26,7 @@ BuildRequires:	intltool
 BuildArch:	noarch
 
 %description
-The Mandriva Online tool allows users to be kept informed about security
+The %{vendor} Online tool allows users to be kept informed about security
 updates, hardware support/enhancements and other high value services.
 The package include :
 * Update daemon which allows you to install security updates 
@@ -62,8 +62,8 @@ EOF
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
 cat > %{buildroot}%{_sysconfdir}/xdg/autostart/mandriva-mdvonline.desktop <<EOF
 [Desktop Entry]
-Name=Mandriva Online Applet
-Comment=Applet for Mandriva Online
+Name=%{vendor} Online Applet
+Comment=Applet for %{vendor} Online
 Exec=mdkapplet
 Icon=mdkonline
 Type=Application
