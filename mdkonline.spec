@@ -1,16 +1,12 @@
 summary:	%{vendor} Online Update Tool  
 Name:		mdkonline
 Version:	3.10.1
-Release:	1
-Source0:	%{name}-%{version}.tar.xz
-Source1:	%{name}.rpmlintrc
-URL:		http://www.mandrivaonline.com
+Release:	2
 License:	GPLv2+
 Group:		System/Configuration/Other
-Url:		http://www.openmandriva.org/
+Url:		https://abf.io/software/mdkonline
 Source0:	%{name}-%{version}.tar.xz
-Patch0:		mdkonline-2.78-new-url.patch
-Patch1:		mdkonline-2.78-upgrade.patch
+#Patch1:		mdkonline-2.78-upgrade.patch
 BuildArch:	noarch
 BuildRequires:	gettext
 BuildRequires:	perl-MDK-Common-devel
