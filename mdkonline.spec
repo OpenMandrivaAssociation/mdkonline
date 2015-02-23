@@ -6,6 +6,7 @@ License:	GPLv2+
 Group:		System/Configuration/Other
 Url:		https://abf.io/software/mdkonline
 Source0:	%{name}-%{version}.tar.xz
+Source1:	%{name}.rpmlintrc
 #Patch1:		mdkonline-2.78-upgrade.patch
 BuildArch:	noarch
 BuildRequires:	gettext
