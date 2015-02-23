@@ -1,7 +1,10 @@
-Summary:	Mandriva Online Update Tool  
+summary:	%{vendor} Online Update Tool  
 Name:		mdkonline
-Version:	2.78
-Release:	11
+Version:	3.10.1
+Release:	1
+Source0:	%{name}-%{version}.tar.xz
+Source1:	%{name}.rpmlintrc
+URL:		http://www.mandrivaonline.com
 License:	GPLv2+
 Group:		System/Configuration/Other
 Url:		http://www.openmandriva.org/
@@ -12,20 +15,26 @@ BuildArch:	noarch
 BuildRequires:	gettext
 BuildRequires:	perl-MDK-Common-devel
 # for LWP::UserAgent:
-Requires:	perl-libwww-perl
+Requires:	perl(LWP::UserAgent)
 Requires:	rpmdrake >= 5.11.1
-
+Requires:	drakxtools-curses >= 16.0
+# for gurpmi.addmedia & update API:
+Requires:       rpmdrake
 # For adding restricted media:
-Requires:	perl-Crypt-SSLeay
+Requires:	perl(Crypt::SSLeay)
 # for good gurpmi:
 
-Requires:	urpmi >= 6.17
-Requires:	gurpmi >= 6.17
-Requires:	libdrakx-net >= 0.29
+Requires:	urpmi >= 7.5
+Requires:	gurpmi
+Requires:	libdrakx-net >= 2.6
+
 %rename		%{name}-backend
+BuildRequires:	gettext perl-MDK-Common-devel
+BuildRequires:	intltool
+BuildArch:	noarch
 
 %description
-The OpenMandriva Online tool allows users to be kept informed about security
+The %{vendor} Online tool allows users to be kept informed about security
 updates, hardware support/enhancements and other high value services.
 The package include :
 * Update daemon which allows you to install security updates 
@@ -47,14 +56,23 @@ make PREFIX=%{buildroot} MANDRIVA_VERSION=%{distepoch} install
 mkdir -p %{buildroot}%{_sysconfdir}/cron.daily/
 touch %{buildroot}%{_sysconfdir}/cron.daily/mdkupdate
 
+mkdir -p %{buildroot}%{_sysconfdir}/X11/xinit.d
+cat > %{buildroot}%{_sysconfdir}/X11/xinit.d/mdkapplet <<EOF
+#!/bin/sh
+DESKTOP=\$1
+case \$DESKTOP in
+   IceWM|Fluxbox) exec /usr/bin/mdkapplet;;
+esac
+EOF
+
 #install lang
 %find_lang %{name}
 
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
 cat > %{buildroot}%{_sysconfdir}/xdg/autostart/mandriva-mdvonline.desktop <<EOF
 [Desktop Entry]
-Name=OpenMandriva Online Applet
-Comment=Applet for OpenMandriva Online
+Name=%{vendor} Online Applet
+Comment=Applet for %{vendor} Online
 Exec=mdkapplet
 Icon=mdkonline
 Type=Application
@@ -69,22 +87,25 @@ if [ -r /etc/cron.daily/mdkupdate ]; then
 fi
 
 %files -f %{name}.lang
-%doc COPYING 
-%{_sbindir}/mdkapplet-config
-%{_sbindir}/mdkapplet-*-helper
-%{_sbindir}/mdkupdate
-%{_bindir}/*
+%{_bindir}/mdkapplet
+%{_bindir}/mdkapplet-config
+%{_bindir}/mdkapplet-update-checker
+%{_bindir}/mdkapplet-upgrade-helper
+%{_bindir}/mdkupdate
+%{_bindir}/urpmi.update
+%{_libexecdir}/mdkapplet-config
+%{_libexecdir}/mdkapplet-upgrade-helper
+%{_libexecdir}/mdkupdate
+%{_datadir}/polkit-1/actions/*.policy
 %dir %{_prefix}/lib/libDrakX/drakfirsttime
 %{_prefix}/lib/libDrakX/drakfirsttime/*.pm
-%{_sysconfdir}/xdg/autostart/mandriva-*.desktop
+%{_sysconfdir}/xdg/autostart/*.desktop
 %{_miconsdir}/*.png
 %{_iconsdir}/*.png
 %{_liconsdir}/*.png
-%{_datadir}/mime/packages/*
-%{_datadir}/mimelnk/application/
-%{_datadir}/%{name}/pixmaps/*.png
-%{_sysconfdir}/security/console.apps/urpmi.update
-%{_sysconfdir}/pam.d/urpmi.update
+%{_datadir}/mime/packages
+%{_datadir}/mimelnk/application
+%{_datadir}/%{name}/pixmaps
+%{_sysconfdir}/X11/xinit.d/mdkapplet
 %ghost %config(noreplace) %{_sysconfdir}/cron.daily/mdkupdate
 %config(noreplace) %{_sysconfdir}/sysconfig/mdkapplet
-
