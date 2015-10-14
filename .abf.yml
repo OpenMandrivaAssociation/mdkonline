@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   mdkonline-3.10.1.tar.xz: f173aa171c2d8569f126afd013d2499d487f308a
+sources:
+  mdkonline-3.10.2.tar.xz: 5942e5d5cd1929c03b26a65b15c9fc261edfeb3e

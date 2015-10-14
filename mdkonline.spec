@@ -1,13 +1,12 @@
 summary:	%{vendor} Online Update Tool  
 Name:		mdkonline
-Version:	3.10.1
-Release:	4
+Version:	3.10.2
+Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Other
-Url:		https://abf.io/software/mdkonline
+Url:		https://abf.io/omv_software/mdkonline
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
-#Patch1:		mdkonline-2.78-upgrade.patch
 BuildArch:	noarch
 BuildRequires:	gettext
 BuildRequires:	perl-MDK-Common-devel
