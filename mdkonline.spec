@@ -1,6 +1,6 @@
 summary:	%{vendor} Online Update Tool  
 Name:		mdkonline
-Version:	3.10.2
+Version:	3.10.3
 Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Other
