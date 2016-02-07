@@ -30,9 +30,10 @@ BuildRequires:	intltool
 BuildArch:	noarch
 
 %description
-The %{vendor} Online tool allows users to be kept informed about security
-updates, hardware support/enhancements and other high value services.
-The package include :
+The %{vendor} Online tool allows users to be kept informed about
+security updates, hardware support/enhancements and other high
+value services.
+The package includes :
 * Update daemon which allows you to install security updates 
   automatically,
 * A KDE/Gnome/IceWM compliant applet for security updates notification
