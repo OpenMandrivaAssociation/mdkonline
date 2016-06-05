@@ -1,10 +1,10 @@
 summary:	%{vendor} Online Update Tool  
 Name:		mdkonline
 Version:	3.10.4
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Configuration/Other
-Url:		https://abf.io/omv_software/mdkonline
+Url:		https://github.com/OpenMandrivaSoftware/mdkonline
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
 BuildArch:	noarch
@@ -66,7 +66,7 @@ EOF
 %find_lang %{name}
 
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
-cat > %{buildroot}%{_sysconfdir}/xdg/autostart/mandriva-mdvonline.desktop <<EOF
+cat > %{buildroot}%{_sysconfdir}/xdg/autostart/omvonline.desktop <<EOF
 [Desktop Entry]
 Name=%{vendor} Online Applet
 Comment=Applet for %{vendor} Online
