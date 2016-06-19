@@ -1,7 +1,7 @@
-summary:	%{vendor} Online Update Tool  
+summary:	%{vendor} Online Update Tool
 Name:		mdkonline
 Version:	3.10.4
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		System/Configuration/Other
 Url:		https://github.com/OpenMandrivaSoftware/mdkonline
