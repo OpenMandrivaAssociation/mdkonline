@@ -1,7 +1,7 @@
 summary:	%{vendor} Online Update Tool
 Name:		mdkonline
-Version:	3.10.4
-Release:	3
+Version:	3.11.0
+Release:	1
 License:	GPLv2+
 Group:		System/Configuration/Other
 Url:		https://github.com/OpenMandrivaSoftware/mdkonline
@@ -23,6 +23,7 @@ Requires:	perl(Crypt::SSLeay)
 Requires:	urpmi >= 7.5
 Requires:	gurpmi
 Requires:	libdrakx-net >= 2.6
+Requires:       typelib(AppIndicator3)
 
 %rename		%{name}-backend
 BuildRequires:	gettext perl-MDK-Common-devel
