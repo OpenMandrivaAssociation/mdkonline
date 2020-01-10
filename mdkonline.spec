@@ -42,7 +42,7 @@ The package includes :
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 perl -pi -e 's!my \$ver = 1;!my \$ver = '"'%{version}-%{release}'"';!' mdkapplet
