@@ -8,6 +8,7 @@ Url:		https://github.com/OpenMandrivaSoftware/mdkonline
 Source0:	%{name}-%{version}.tar.xz
 Source1:	%{name}.rpmlintrc
 BuildArch:	noarch
+BuildRequires:	make
 BuildRequires:	gettext
 BuildRequires:	perl-MDK-Common-devel
 # for LWP::UserAgent:
